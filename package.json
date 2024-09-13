@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "@daw588/roblox.js": "^0.1.7",
+    "@discordjs/opus": "^0.9.0",
+    "@discordjs/voice": "^0.14.0",
+    "axios": "^1.6.8",
+    "discord-tts": "^1.0.3",
+    "discord.js": "^14.14.1",
+    "ffmpeg-static": "^5.1.0",
+    "libsodium-wrappers": "^0.7.11",
+    "slash-commands": "^1.5.0"
+  },
+  "name": "galaxies-end-utilites",
+  "version": "1.0.0",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "deploy": "node src\\Deployer.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
