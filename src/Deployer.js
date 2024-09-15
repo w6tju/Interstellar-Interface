@@ -2,7 +2,6 @@ const { REST, Routes } = require('discord.js');
 const { clientId,token } = require('./../config/config.json');
 const fs = require('node:fs');
 
-
 const commands = [];
 // Grab all the command files from the commands directory you created earlier
 const commandFiles = fs.readdirSync('./src/commands/').filter(file => file.endsWith('.js'));
