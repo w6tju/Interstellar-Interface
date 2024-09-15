@@ -10,13 +10,13 @@
     "libsodium-wrappers": "^0.7.11",
     "slash-commands": "^1.5.0"
   },
-  "name": "galaxies-end-utilites",
+  "name": "InterstellarInterface",
   "version": "1.0.0",
   "main": "./src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
-    "deploy": "node src\\Deployer.js"
+    "deploy": "node ./src/Deployer.js"
   },
   "keywords": [],
   "author": "",
