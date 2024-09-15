@@ -15,7 +15,7 @@ module.exports = {
 			.setRequired(true))
         .addStringOption((option) =>
 			option
-			.setName('datatore')
+			.setName('datastore')
 			.setDescription('datastore the key is in')
 			.addChoices({name:'Player',value:'PlrData'},{name:'game',value:'GameData'})
 			.setRequired(true)
@@ -27,6 +27,8 @@ module.exports = {
 			.setRequired(true)
 		),
 	async execute(interaction) {
-		await MS.MessageSend(interaction.options.get('msg').value,"Annoucements",interaction);
+		const datastore = interaction.option.get('datastore')
+		const key = interaction.option.get('key')
+		await MS.GetDataStore(datastore,key,interaction)
 	},
 };
