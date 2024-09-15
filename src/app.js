@@ -1,6 +1,7 @@
 // Require the necessary discord.js classes
 const {_Discord,Events, Collection,PresenceUpdateStatus,ActivityType} = require('discord.js');
 //const _deployer = require('./Deployer.js')
+const http = require('node:http')
 const client = require('./createClient.js')
 const fs = require('node:fs');
 const path = require('node:path');
@@ -51,3 +52,14 @@ client.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
+
+const server = http.createServer((req,res) => {
+	console.log(req.socket.data)
+	res.end();
+});
+
+server.on('clientError', (err, socket) => {
+	socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
+
+server.listen(Http_Port
