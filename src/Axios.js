@@ -1,15 +1,17 @@
 const axios = require('axios').default
+const Version_Ids = {"DU":0,"PTU":5627854638,"LIVE":5627854638} 
+const RBX_Key = '87LVKBOwS0Si/rMSYZ7dUaoD3XSvtjG+ekFhoMUsb2xeXxY7'
 
 module.exports.MessageSend = async function MessageSend(Message, Topic, interaction) {
-
+    const universe = Version_Ids[interaction.options.get("game_version")]
     const response = await axios.post(
-        `https://apis.roblox.com/messaging-service/v1/universes/${5627854638}/topics/${Topic}`,
+        `https://apis.roblox.com/messaging-service/v1/universes/${universe}/topics/${Topic}`,
         {
             'message': Message
         },
         {
             headers: {
-                'x-api-key': '87LVKBOwS0Si/rMSYZ7dUaoD3XSvtjG+ekFhoMUsb2xeXxY7',
+                'x-api-key': RBX_Key,
                 'Content-Type': 'application/json'
             }
         }
@@ -27,4 +29,12 @@ module.exports.MessageSend = async function MessageSend(Message, Topic, interact
         if (response.status == 200) return interaction.reply({ content:`Message sucessfully sent!`,ephemeral: true })
         if (response.status != 200) return interaction.reply({ content:`**Error:** An unknown issue has occurred.`,ephemeral: true })
     }
+}
+
+module.exports.GetDataStore = async function GetDataStore(DataStore,Key,interaction) {
+    const universe = Version_Ids[interaction.options.get("game_version")]
+    const response = await axios.get(
+        `/cloud/v2/universes/${universe}/data-stores/${DataStore}/entries/${Key}`
+    )
+    return response
 }
