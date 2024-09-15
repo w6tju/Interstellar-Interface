@@ -5,8 +5,8 @@ const MS = require('./../Axios.js')
 module.exports = {
 	data: 
 		new SlashCommandBuilder()
-		.setName('announce')
-		.setDescription('make annoucement to game')
+		.setName('get_datastore')
+		.setDescription('get a datastore key')
 		.addStringOption((option)=>
 		option
 			.setName('game_version')
@@ -15,8 +15,15 @@ module.exports = {
 			.setRequired(true))
         .addStringOption((option) =>
 			option
-			.setName('msg')
-			.setDescription('message announce')
+			.setName('datatore')
+			.setDescription('datastore the key is in')
+			.addChoices({name:'Player',value:'PlrData'},{name:'game',value:'GameData'})
+			.setRequired(true)
+		)
+		.addStringOption((option)=>
+		option
+			.setName('key')
+			.setDescription('key name')
 			.setRequired(true)
 		),
 	async execute(interaction) {
